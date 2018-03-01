@@ -1,34 +1,24 @@
-import numpy as np
 import pandas as pd
 
-from sklearn.datasets import load_breast_cancer, fetch_lfw_people
 from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-
 from keras.models import Sequential
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.layers import Dense, Conv2D, MaxPool2D, Flatten, Dropout
-from keras.utils import to_categorical
-
-import matplotlib.pyplot as plt
-% matplotlib
-inline
 
 train = pd.read_csv('train.csv')
 test = pd.read_csv('test.csv')
-
-train.head()
 
 X = train.drop(columns=['label'])
 X = X.values / 255.
 X = X.reshape(-1, 28, 28, 1)
 y = train['label']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=5)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
 
 
 def model_func(n1=30, d1=2.5, s1=5, p1=2, n2=40, d2=.25, s2=3, p2=2, n3=200, d3=.5, n4=10):
+
     model = Sequential()
     model.add(Conv2D(n1, (s1, s1), input_shape=(28, 28, 1), activation='relu'))
     model.add(MaxPool2D((p1, p1)))
