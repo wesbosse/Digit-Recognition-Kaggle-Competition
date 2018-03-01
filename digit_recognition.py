@@ -17,18 +17,18 @@ y = train['label']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
 
 
-def model_func(n1=30, d1=2.5, s1=5, p1=2, n2=40, d2=.25, s2=3, p2=2, n3=200, d3=.5, n4=10):
+def model_func(n1=30, d1=.25, s1=5, p1=2, n2=40, d2=.25, s2=3, p2=2, n3=200, d3=.5, n4=10):
 
     model = Sequential()
     model.add(Conv2D(n1, (s1, s1), input_shape=(28, 28, 1), activation='relu'))
     model.add(MaxPool2D((p1, p1)))
-    model.add(Dropout(0.25))
+    model.add(Dropout(d1))
     model.add(Conv2D(n2, (s2, s2), activation='relu'))
     model.add(MaxPool2D((p2, p2)))
-    model.add(Dropout(0.25))
+    model.add(Dropout(d2))
     model.add(Flatten())
     model.add(Dense(n3, activation='relu'))
-    model.add(Dropout(0.5))
+    model.add(Dropout(d3))
     model.add(Dense(n4, activation='softmax'))
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -44,16 +44,16 @@ pipe = Pipeline([
 
 
 params = {
-    'model__epochs': [20],
-    'model__n1': [30, 50, 80],
+    'model__epochs': [14, 20, 30],
+    'model__n1': [30, 80],
     'model__d1': [.2, .35, .5],
-    'model__s1': [3,4,5],
-    'model__p1': [1,2,3],
+    'model__s1': [4,5],
+    'model__p1': [2,3],
     'model__n2': [30,60],
     'model__d2': [.2, .35, .5],
-    'model__s2': [2,3,4],
-    'model__p2': [1,2,3],
-    'model__n3': [10,50,200],
+    'model__s2': [3, 4],
+    'model__p2': [2,3],
+    'model__n3': [50,200],
     'model__d3': [.4, .5, .6]
 }
 
