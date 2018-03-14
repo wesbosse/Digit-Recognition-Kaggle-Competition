@@ -1,2 +1,11 @@
 # Digit-Recognition-Kaggle-Competition
 Convolutional Neural Networks in Keras to detect numeric digits from images. Grid searched and cross validated using AWS EC2 instance
+
+##Competition Description
+MNIST ("Modified National Institute of Standards and Technology") is the de facto “hello world” dataset of computer vision. Since its release in 1999, this classic dataset of handwritten images has served as the basis for benchmarking classification algorithms. As new machine learning techniques emerge, MNIST remains a reliable resource for researchers and learners alike.
+
+In this competition, your goal is to correctly identify digits from a dataset of tens of thousands of handwritten images. We’ve curated a set of tutorial-style kernels which cover everything from regression to neural networks. We encourage you to experiment with different algorithms to learn first-hand what works well and how techniques compare.
+
+##Practice Skills
+-Computer vision fundamentals including simple neural networks
+-Classification methods such as SVM and K-nearest neighbors
